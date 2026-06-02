@@ -29,6 +29,12 @@ export const chats = [
   { id: "c6", name: "Sara H.", last: "📷 Photo", time: "Yesterday" },
 ];
 
+export const channels = [
+  { id: "ch1", name: "Saudi Ministry of Health", handle: "@moh", subs: "2.1M", official: true, last: "Heat advisory issued for central region" },
+  { id: "ch2", name: "Riyadh Season", handle: "@riyadhseason", subs: "4.8M", official: true, last: "Tonight: drone show at Boulevard" },
+  { id: "ch3", name: "Aramco Newsroom", handle: "@aramco", subs: "1.3M", official: true, last: "Q2 earnings live in 30 min" },
+];
+
 export const reels = [
   { id: "r1", creator: "@dunes.studio", caption: "Sunset over AlUla — shot on Circle Pro", likes: "128K", music: "Ambient · Sahara" },
   { id: "r2", creator: "@chefnoura", caption: "3-minute kunafa hack", likes: "89K", music: "Original audio" },
@@ -65,4 +71,39 @@ export const transactions = [
   { id: "x3", who: "Salary · Aramco", amount: 18500.00, time: "Yesterday", cat: "Income" },
   { id: "x4", who: "Jarir Bookstore", amount: -245.00, time: "Yesterday", cat: "Shopping" },
   { id: "x5", who: "STC Pay top-up", amount: -200.00, time: "May 12", cat: "Recharge" },
+];
+
+// Mini Apps inside Circle (universal app hub)
+export const miniApps = [
+  { id: "ma1", name: "Careem", cat: "Mobility", color: "from-emerald-500/40 to-teal-600/30", icon: "🚗" },
+  { id: "ma2", name: "Jahez", cat: "Food", color: "from-orange-500/40 to-red-500/30", icon: "🍔" },
+  { id: "ma3", name: "Noon", cat: "Shopping", color: "from-yellow-400/40 to-amber-500/30", icon: "🛍" },
+  { id: "ma4", name: "Tickets", cat: "Events", color: "from-fuchsia-500/40 to-pink-500/30", icon: "🎟" },
+  { id: "ma5", name: "Absher", cat: "Gov", color: "from-cyan-500/40 to-blue-600/30", icon: "🪪" },
+  { id: "ma6", name: "Mawid", cat: "Health", color: "from-rose-500/40 to-red-500/30", icon: "🩺" },
+  { id: "ma7", name: "Tarjama", cat: "Translate", color: "from-violet-500/40 to-indigo-600/30", icon: "🌐" },
+  { id: "ma8", name: "Studio", cat: "Create", color: "from-amber-500/40 to-orange-600/30", icon: "✨" },
+];
+
+// AI conversation seed
+export const aiSeed = [
+  { id: "a1", role: "ai", text: "Hi Yousef — I noticed you have a flight to Istanbul on Thursday. Want me to draft your packing list and pre-translate restaurant menus near your hotel?" },
+];
+
+// Command palette items
+export const commands = [
+  { id: "cmd1", group: "Quick", label: "Compose post to Midan", hint: "M then N" },
+  { id: "cmd2", group: "Quick", label: "Start a Space (audio room)", hint: "S" },
+  { id: "cmd3", group: "Quick", label: "Scan & pay", hint: "P then S" },
+  { id: "cmd4", group: "Navigate", label: "Open Rihla — Trip planner", hint: "G then R" },
+  { id: "cmd5", group: "Navigate", label: "Open Circle Mail", hint: "G then M" },
+  { id: "cmd6", group: "AI", label: "Summarize unread messages", hint: "A S" },
+  { id: "cmd7", group: "AI", label: "Translate clipboard", hint: "A T" },
+  { id: "cmd8", group: "Privacy", label: "Toggle Ghost mode", hint: "⌥ G" },
+];
+
+// Channel/Workspace cards on Home
+export const spaces = [
+  { id: "sp1", title: "Riyadh Tech After-Hours", host: "@majidf", listeners: 1280, live: true },
+  { id: "sp2", title: "Arabic Poetry Tonight", host: "@noor", listeners: 412, live: true },
 ];
