@@ -100,6 +100,27 @@ export function PayScreen() {
           })}
         </div>
       </div>
+
+      {/* Split bill + federation banner */}
+      <div className="px-5 mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="rounded-2xl border border-border bg-card p-4">
+          <div className="text-[10px] uppercase tracking-widest text-secondary">Smart split</div>
+          <div className="font-display text-lg mt-1">Dinner at Myazu · 4 friends</div>
+          <div className="text-xs text-muted-foreground">SAR 92.50 each · AI-rounded</div>
+          <div className="flex -space-x-2 mt-3">
+            {["L","O","S","K"].map(i => (
+              <div key={i} className="w-7 h-7 rounded-full bg-gradient-mesh border-2 border-card flex items-center justify-center text-[10px]" style={{ color: "hsl(var(--cream))" }}>{i}</div>
+            ))}
+            <button className="ms-3 text-xs px-3 py-1 rounded-full bg-primary text-primary-foreground">Request</button>
+          </div>
+        </div>
+        <div className="rounded-2xl border border-secondary/30 bg-gradient-to-br from-secondary/10 to-transparent p-4 relative overflow-hidden">
+          <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />
+          <div className="text-[10px] uppercase tracking-widest text-secondary">Federation</div>
+          <div className="font-display text-lg mt-1">Send to 47 countries</div>
+          <div className="text-xs text-muted-foreground mt-1">Zero fees · Settles in seconds via Circle's global federation.</div>
+        </div>
+      </div>
     </div>
   );
 }
