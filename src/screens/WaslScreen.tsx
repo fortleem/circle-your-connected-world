@@ -1,5 +1,5 @@
-import { chats } from "@/lib/mock";
-import { Search, Plus, Sparkles, Mic, Send, Image as ImageIcon, Phone, Video, Ghost, Users } from "lucide-react";
+import { chats, channels } from "@/lib/mock";
+import { Search, Plus, Sparkles, Mic, Send, Image as ImageIcon, Phone, Video, Ghost, Users, BadgeCheck, Radio } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -41,6 +41,30 @@ export function WaslScreen() {
             <span className="text-[10px] text-muted-foreground">{s}</span>
           </div>
         ))}
+      </div>
+
+      {/* Official channels strip */}
+      <div className="px-5 mt-6">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="font-display text-lg flex items-center gap-2"><Radio className="w-4 h-4 text-secondary" /> Official channels</h2>
+          <button className="text-[11px] text-secondary">Discover</button>
+        </div>
+        <div className="flex gap-3 overflow-x-auto scrollbar-hide -mx-5 px-5">
+          {channels.map(ch => (
+            <div key={ch.id} className="shrink-0 w-64 glass rounded-2xl p-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center text-primary-foreground font-display">{ch.name[0]}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1 text-sm font-medium truncate">
+                    {ch.name} <BadgeCheck className="w-3.5 h-3.5 text-secondary shrink-0" />
+                  </div>
+                  <div className="text-[10px] text-muted-foreground">{ch.subs} subscribers</div>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground mt-2 line-clamp-2">{ch.last}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Chat list */}
