@@ -3,7 +3,7 @@ import { dict } from "@/lib/i18n";
 import { Sun, Moon, Languages, Bell, Search } from "lucide-react";
 import { CircleMark } from "@/components/brand/CircleMark";
 
-export function TopBar({ title }: { title?: string }) {
+export function TopBar({ title, onSearch }: { title?: string; onSearch?: () => void }) {
   const { theme, toggleTheme, locale, toggleLocale } = useApp();
   const t = dict[locale];
   return (
@@ -17,7 +17,10 @@ export function TopBar({ title }: { title?: string }) {
           </div>
         </div>
         <div className="flex-1" />
-        <button className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Search">
+        <button onClick={onSearch} className="hidden sm:flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5 text-muted-foreground hover:text-foreground transition" aria-label="Search">
+          <Search className="w-3.5 h-3.5" /> <span>Search</span> <kbd className="ms-1 text-[9px] px-1 py-0.5 rounded bg-muted">⌘K</kbd>
+        </button>
+        <button onClick={onSearch} className="sm:hidden w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Search">
           <Search className="w-4 h-4" />
         </button>
         <button onClick={toggleLocale} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Language">

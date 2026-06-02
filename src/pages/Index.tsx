@@ -5,6 +5,8 @@ import { Onboarding } from "@/components/Onboarding";
 import { Dock } from "@/components/shell/Dock";
 import { TopBar } from "@/components/shell/TopBar";
 import { AIOrb } from "@/components/shell/AIOrb";
+import { AIAssistant } from "@/components/AIAssistant";
+import { CommandPalette } from "@/components/CommandPalette";
 import { TabId } from "@/lib/tabs";
 import { HomeScreen } from "@/screens/HomeScreen";
 import { WaslScreen } from "@/screens/WaslScreen";
@@ -16,20 +18,13 @@ import { PayScreen } from "@/screens/PayScreen";
 import { ProfileScreen } from "@/screens/ProfileScreen";
 
 const screens: Record<TabId, () => JSX.Element> = {
-  home: HomeScreen,
-  wasl: WaslScreen,
-  mashahd: MashahdScreen,
-  lamahat: LamahatScreen,
-  midan: MidanScreen,
-  rihla: RihlaScreen,
-  pay: PayScreen,
-  profile: ProfileScreen,
+  home: HomeScreen, wasl: WaslScreen, mashahd: MashahdScreen, lamahat: LamahatScreen,
+  midan: MidanScreen, rihla: RihlaScreen, pay: PayScreen, profile: ProfileScreen,
 };
 
 const titles: Record<TabId, string | undefined> = {
-  home: undefined,
-  wasl: "Wasl", mashahd: "Mashahd", lamahat: "Lamahat",
-  midan: "Midan", rihla: "Rihla", pay: "Circle Pay", profile: "Profile",
+  home: undefined, wasl: "Wasl", mashahd: "Mashahd", lamahat: "Lamahat",
+  midan: "Midan", rihla: "Rihla", pay: "Circle Pay", profile: "You",
 };
 
 const Index = () => {
@@ -39,11 +34,28 @@ const Index = () => {
     return !localStorage.getItem("circle-onboarded");
   });
   const [tab, setTab] = useState<TabId>("home");
+  const [aiOpen, setAiOpen] = useState(false);
+  const [paletteOpen, setPaletteOpen] = useState(false);
   const Screen = screens[tab];
 
   useEffect(() => {
-    const t = setTimeout(() => setShowSplash(false), 1600);
+    const t = setTimeout(() => setShowSplash(false), 1800);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setPaletteOpen(o => !o);
+      }
+      if (e.key === "Escape") {
+        setPaletteOpen(false);
+        setAiOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
   }, []);
 
   const finishOnboarding = () => {
@@ -53,12 +65,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Ambient aurora background */}
       <div className="fixed inset-0 -z-10 aurora-bg opacity-40 pointer-events-none" />
       <div className="fixed top-0 inset-x-0 h-[60vh] -z-10 bg-gradient-to-b from-secondary/5 to-transparent pointer-events-none" />
 
       <div className="max-w-2xl mx-auto relative">
-        <TopBar title={titles[tab]} />
+        <TopBar title={titles[tab]} onSearch={() => setPaletteOpen(true)} />
         <AnimatePresence mode="wait">
           <motion.main
             key={tab}
@@ -73,8 +84,11 @@ const Index = () => {
         </AnimatePresence>
       </div>
 
-      <AIOrb />
+      <AIOrb onClick={() => setAiOpen(true)} />
       <Dock active={tab} onChange={setTab} />
+
+      <AIAssistant open={aiOpen} onClose={() => setAiOpen(false)} />
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
 
       <AnimatePresence>{showSplash && <Splash />}</AnimatePresence>
       <AnimatePresence>

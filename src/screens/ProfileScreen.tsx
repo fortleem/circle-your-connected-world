@@ -1,4 +1,4 @@
-import { BadgeCheck, ShieldCheck, Sparkles, Languages, Palette, Lock, Database, Globe, ChevronRight } from "lucide-react";
+import { BadgeCheck, ShieldCheck, Sparkles, Languages, Palette, Lock, Database, Globe, ChevronRight, Mail, Radio, Grid3x3, Scale, KeyRound, HardDriveDownload } from "lucide-react";
 import { useApp } from "@/providers/AppProvider";
 
 export function ProfileScreen() {
@@ -52,7 +52,20 @@ export function ProfileScreen() {
         <Row icon={Sparkles} title="AI personalization" sub="What Circle knows about you" />
         <Row icon={Palette} title="Theme" sub={theme === "dark" ? "Dark · Aurora" : "Light · Cream"} onClick={toggleTheme} />
         <Row icon={Languages} title="Language" sub={locale === "ar" ? "العربية (RTL)" : "English"} onClick={toggleLocale} />
-        <Row icon={Globe} title="Region" sub="Saudi Arabia" />
+        <Row icon={Globe} title="Region" sub="Saudi Arabia · Auto data plane" />
+      </Section>
+
+      <Section title="Circle ecosystem">
+        <Row icon={KeyRound} title="Circle ID" sub="yousef@circle.app · OIDC provider" />
+        <Row icon={Mail} title="Circle Mail" sub="3 unread · Free forever" />
+        <Row icon={Grid3x3} title="Mini apps" sub="8 connected · Browse hub" />
+        <Row icon={Radio} title="Mesh network" sub="4 peers nearby · Bluetooth + Wi-Fi Direct" />
+      </Section>
+
+      <Section title="Trust & governance">
+        <Row icon={ShieldCheck} title="Circle Verify" sub="Identity verified · One account per ID" />
+        <Row icon={HardDriveDownload} title="Backup & migrate" sub="Encrypted, user-held key" />
+        <Row icon={Scale} title="Community governance" sub="Vote on moderation policies" />
       </Section>
     </div>
   );
