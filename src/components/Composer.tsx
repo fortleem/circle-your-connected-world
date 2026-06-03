@@ -6,12 +6,16 @@ import { toast } from "sonner";
 type Kind = "post" | "poll" | "media";
 type Target = "Public" | "Followers" | "Workspace";
 
-export function Composer({ open, onClose, defaultTarget = "Public" }: { open: boolean; onClose: () => void; defaultTarget?: Target }) {
-  const [kind, setKind] = useState<Kind>("post");
-  const [text, setText] = useState("");
+export function Composer({ open, onClose, defaultTarget = "Public", initialKind, initialText }: { open: boolean; onClose: () => void; defaultTarget?: Target; initialKind?: Kind; initialText?: string }) {
+  const [kind, setKind] = useState<Kind>(initialKind ?? "post");
+  const [text, setText] = useState(initialText ?? "");
   const [target, setTarget] = useState<Target>(defaultTarget);
   const [media, setMedia] = useState<string[]>([]);
   const [pollOptions, setPollOptions] = useState<string[]>(["", ""]);
+
+  useEffect(() => {
+    if (open) { setKind(initialKind ?? "post"); setText(initialText ?? ""); }
+  }, [open, initialKind, initialText]);
 
   const hashtags = useMemo(
     () => Array.from(text.matchAll(/#[\p{L}\d_]+/gu)).map(m => m[0]).slice(0, 4),
