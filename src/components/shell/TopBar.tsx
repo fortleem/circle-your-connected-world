@@ -1,9 +1,9 @@
 import { useApp } from "@/providers/AppProvider";
 import { dict } from "@/lib/i18n";
-import { Sun, Moon, Languages, Bell, Search } from "lucide-react";
+import { Sun, Moon, Languages, Bell, Search, Settings as SettingsIcon } from "lucide-react";
 import { CircleMark } from "@/components/brand/CircleMark";
 
-export function TopBar({ title, onSearch }: { title?: string; onSearch?: () => void }) {
+export function TopBar({ title, onSearch, onSettings }: { title?: string; onSearch?: () => void; onSettings?: () => void }) {
   const { theme, toggleTheme, locale, toggleLocale } = useApp();
   const t = dict[locale];
   return (
