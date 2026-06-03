@@ -151,6 +151,8 @@ export function HomeScreen() {
         </div>
       </section>
 
+      <MeshPresence />
+
       {/* Nearby */}
       <section>
         <SectionHeader icon={MapPin} title={t.nearby} />
