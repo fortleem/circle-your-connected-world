@@ -17,10 +17,12 @@ export function MidanScreen() {
       </div>
 
       {/* Composer */}
-      <div className="mx-5 mt-4 glass rounded-2xl p-3 flex items-start gap-3">
+      <div className="mx-5 mt-4 glass rounded-2xl p-3 flex items-start gap-3 cursor-pointer"
+        onClick={() => window.dispatchEvent(new CustomEvent("circle:composer", { detail: { kind: "post" } }))}>
         <div className="w-9 h-9 rounded-full bg-gradient-hero flex items-center justify-center text-primary-foreground font-display">Y</div>
-        <input className="bg-transparent flex-1 outline-none text-sm py-2" placeholder="Share to the public square" />
-        <button className="w-9 h-9 rounded-full bg-secondary/20 text-secondary flex items-center justify-center"><Mic className="w-4 h-4" /></button>
+        <div className="bg-transparent flex-1 text-sm py-2 text-muted-foreground">Share to the public square</div>
+        <button onClick={(e) => { e.stopPropagation(); window.dispatchEvent(new CustomEvent("circle:composer", { detail: { kind: "poll" } })); }}
+          className="w-9 h-9 rounded-full bg-secondary/20 text-secondary flex items-center justify-center" aria-label="Poll"><Mic className="w-4 h-4" /></button>
       </div>
 
       {/* Trending strip */}

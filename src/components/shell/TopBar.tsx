@@ -1,9 +1,9 @@
 import { useApp } from "@/providers/AppProvider";
 import { dict } from "@/lib/i18n";
-import { Sun, Moon, Languages, Bell, Search } from "lucide-react";
+import { Sun, Moon, Languages, Bell, Search, Settings as SettingsIcon } from "lucide-react";
 import { CircleMark } from "@/components/brand/CircleMark";
 
-export function TopBar({ title, onSearch }: { title?: string; onSearch?: () => void }) {
+export function TopBar({ title, onSearch, onSettings }: { title?: string; onSearch?: () => void; onSettings?: () => void }) {
   const { theme, toggleTheme, locale, toggleLocale } = useApp();
   const t = dict[locale];
   return (
@@ -25,6 +25,9 @@ export function TopBar({ title, onSearch }: { title?: string; onSearch?: () => v
         </button>
         <button onClick={toggleLocale} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Language">
           <Languages className="w-4 h-4" />
+        </button>
+        <button onClick={onSettings} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Settings">
+          <SettingsIcon className="w-4 h-4" />
         </button>
         <button onClick={toggleTheme} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Theme">
           {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}

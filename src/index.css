@@ -126,13 +126,42 @@
 }
 
 @layer base {
+  :root { --text-scale: 1; }
   * { @apply border-border; }
-  html { -webkit-font-smoothing: antialiased; }
+  html { -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--text-scale)); }
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "ss01", "cv11";
   }
   h1, h2, h3, .font-display { font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; letter-spacing: -0.02em; }
+
+  html[data-reduced-motion="true"] *,
+  html[data-reduced-motion="true"] *::before,
+  html[data-reduced-motion="true"] *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  html[data-contrast="high"] {
+    --border: 60 8% 35%;
+    --muted-foreground: 60 8% 15%;
+    --foreground: 60 12% 4%;
+  }
+  html[data-contrast="high"].dark {
+    --border: 40 30% 70%;
+    --muted-foreground: 40 30% 88%;
+    --foreground: 40 50% 100%;
+  }
+
+  .aurora-bg, .animate-orb-float, .animate-spin-slow { will-change: transform, opacity; }
 }
 
 @layer components {
