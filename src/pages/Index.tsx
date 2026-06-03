@@ -133,6 +133,8 @@ const Index = () => {
       <GovernanceCenter open={governanceOpen} onClose={() => setGovernanceOpen(false)} />
       <Composer
         open={composer.open}
+        initialKind={composer.kind}
+        initialText={composer.draft}
         onClose={() => setComposer({ open: false })}
       />
 
