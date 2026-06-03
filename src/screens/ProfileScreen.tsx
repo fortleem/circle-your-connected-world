@@ -65,7 +65,8 @@ export function ProfileScreen() {
       <Section title="Trust & governance">
         <Row icon={ShieldCheck} title="Circle Verify" sub="Identity verified · One account per ID" />
         <Row icon={HardDriveDownload} title="Backup & migrate" sub="Encrypted, user-held key" />
-        <Row icon={Scale} title="Community governance" sub="Vote on moderation policies" />
+        <Row icon={Scale} title="Community governance" sub="Vote on moderation policies"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:governance"))} />
       </Section>
     </div>
   );
