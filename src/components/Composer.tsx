@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Image as ImageIcon, BarChart3, Mic, Send, Hash, Globe, Users, Sparkles, Plus, Trash2 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 type Kind = "post" | "poll" | "media";
