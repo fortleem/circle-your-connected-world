@@ -107,3 +107,30 @@ export const spaces = [
   { id: "sp1", title: "Riyadh Tech After-Hours", host: "@majidf", listeners: 1280, live: true },
   { id: "sp2", title: "Arabic Poetry Tonight", host: "@noor", listeners: 412, live: true },
 ];
+
+export const proposals = [
+  { id: "pr1", title: "Open-source the Circle AI moderation rubric",
+    summary: "Publish the full moderation policy and let the community propose amendments quarterly.",
+    author: "@council", status: "voting" as const, closesIn: "2d 14h",
+    yes: 18420, no: 1240, abstain: 612, tags: ["Trust", "Transparency"] },
+  { id: "pr2", title: "Cap recommendation reach for unverified accounts",
+    summary: "Reduce algorithmic amplification of unverified accounts by 40% to curb spam waves.",
+    author: "@safety-wg", status: "voting" as const, closesIn: "5d 02h",
+    yes: 9210, no: 4180, abstain: 980, tags: ["Safety", "Algorithm"] },
+  { id: "pr3", title: "Add Amazigh (Tamazight) as an interface language",
+    summary: "Fund community translation of Circle into Tamazight (Tifinagh + Latin scripts).",
+    author: "@locale-collective", status: "passed" as const, closesIn: "Closed",
+    yes: 24400, no: 980, abstain: 1100, tags: ["Locale", "Inclusion"] },
+  { id: "pr4", title: "Mesh relay incentives for offline regions",
+    summary: "Reward devices that relay mesh traffic in areas with limited connectivity.",
+    author: "@mesh-wg", status: "draft" as const, closesIn: "Opens Mon",
+    yes: 0, no: 0, abstain: 0, tags: ["Mesh", "Equity"] },
+];
+
+export const meshPeers = [
+  { id: "m1", name: "Layla", action: "joined Spaces · Riyadh Tech", distance: "12m" },
+  { id: "m2", name: "Khalid", action: "is broadcasting via mesh", distance: "38m" },
+  { id: "m3", name: "Noura", action: "shared a photo to Lamahat", distance: "61m" },
+  { id: "m4", name: "Faisal", action: "started a poll in #Diriyah", distance: "83m" },
+  { id: "m5", name: "Sara", action: "is offline-relaying messages", distance: "120m" },
+];
