@@ -65,12 +65,14 @@ export function HomeScreen() {
       <section className="px-5">
         <div className="grid grid-cols-4 gap-3">
           {[
-            { icon: ScanLine, label: "Scan & Pay" },
-            { icon: Camera, label: "Story" },
-            { icon: Plus, label: "Post" },
-            { icon: Sparkles, label: "Ask AI" },
+            { icon: ScanLine, label: "Scan & Pay", evt: "ai" as const },
+            { icon: Camera, label: "Story", evt: "composer" as const, detail: { kind: "media" } },
+            { icon: Plus, label: "Post", evt: "composer" as const, detail: { kind: "post" } },
+            { icon: Sparkles, label: "Ask AI", evt: "ai" as const },
           ].map((q, i) => (
-            <button key={i} className="glass rounded-2xl py-3 flex flex-col items-center gap-2 hover:scale-[1.03] transition shadow-soft">
+            <button key={i}
+              onClick={() => window.dispatchEvent(new CustomEvent(`circle:${q.evt}`, { detail: q.detail }))}
+              className="glass rounded-2xl py-3 flex flex-col items-center gap-2 hover:scale-[1.03] transition shadow-soft">
               <q.icon className="w-5 h-5 text-secondary" />
               <span className="text-[11px] text-foreground/80">{q.label}</span>
             </button>
