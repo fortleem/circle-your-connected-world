@@ -3,6 +3,7 @@ import { featured, nearby, trending, miniApps, spaces } from "@/lib/mock";
 import { useApp } from "@/providers/AppProvider";
 import { dict } from "@/lib/i18n";
 import { MeshBadge } from "@/components/shell/MeshBadge";
+import { MeshPresence } from "@/components/MeshPresence";
 import { Sparkles, MapPin, TrendingUp, Briefcase, Zap, Plus, Mic, Camera, ScanLine, Mail, BadgeCheck, Radio, Grid3x3, ChevronRight, ShieldCheck } from "lucide-react";
 
 const colorMap: Record<string, string> = {
