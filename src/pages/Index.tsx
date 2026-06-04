@@ -10,6 +10,7 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { SettingsPanel } from "@/components/SettingsPanel";
 import { GovernanceCenter } from "@/components/GovernanceCenter";
 import { Composer } from "@/components/Composer";
+import { CircleHub } from "@/components/CircleHub";
 import { TabId } from "@/lib/tabs";
 import { HomeScreen } from "@/screens/HomeScreen";
 import { WaslScreen } from "@/screens/WaslScreen";
@@ -32,7 +33,7 @@ const titles: Record<TabId, string | undefined> = {
 };
 
 // global event bus for cross-screen overlays
-export const overlayEvent = (name: "composer" | "governance" | "settings" | "ai", detail?: any) =>
+export const overlayEvent = (name: "composer" | "governance" | "settings" | "ai" | "hub", detail?: any) =>
   window.dispatchEvent(new CustomEvent(`circle:${name}`, { detail }));
 
 const Index = () => {
@@ -46,6 +47,7 @@ const Index = () => {
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [governanceOpen, setGovernanceOpen] = useState(false);
+  const [hubOpen, setHubOpen] = useState(false);
   const [composer, setComposer] = useState<{ open: boolean; kind?: "post" | "poll" | "media"; draft?: string }>({ open: false });
   const Screen = screens[tab];
 
@@ -62,7 +64,7 @@ const Index = () => {
       }
       if (e.key === "Escape") {
         setPaletteOpen(false); setAiOpen(false); setSettingsOpen(false);
-        setGovernanceOpen(false); setComposer({ open: false });
+        setGovernanceOpen(false); setComposer({ open: false }); setHubOpen(false);
       }
     };
     window.addEventListener("keydown", handler);
@@ -74,15 +76,18 @@ const Index = () => {
     const onGovernance = () => setGovernanceOpen(true);
     const onSettings = () => setSettingsOpen(true);
     const onAi = () => setAiOpen(true);
+    const onHub = () => setHubOpen(true);
     window.addEventListener("circle:composer", onComposer);
     window.addEventListener("circle:governance", onGovernance);
     window.addEventListener("circle:settings", onSettings);
     window.addEventListener("circle:ai", onAi);
+    window.addEventListener("circle:hub", onHub);
     return () => {
       window.removeEventListener("circle:composer", onComposer);
       window.removeEventListener("circle:governance", onGovernance);
       window.removeEventListener("circle:settings", onSettings);
       window.removeEventListener("circle:ai", onAi);
+      window.removeEventListener("circle:hub", onHub);
     };
   }, []);
 
@@ -131,6 +136,7 @@ const Index = () => {
       <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
       <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
       <GovernanceCenter open={governanceOpen} onClose={() => setGovernanceOpen(false)} />
+      <CircleHub open={hubOpen} onClose={() => setHubOpen(false)} />
       <Composer
         open={composer.open}
         initialKind={composer.kind}
