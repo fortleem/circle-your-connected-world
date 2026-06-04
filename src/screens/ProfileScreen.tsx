@@ -56,15 +56,23 @@ export function ProfileScreen() {
       </Section>
 
       <Section title="Circle ecosystem">
-        <Row icon={KeyRound} title="Circle ID" sub="yousef@circle.app · OIDC provider" />
-        <Row icon={Mail} title="Circle Mail" sub="3 unread · Free forever" />
-        <Row icon={Grid3x3} title="Mini apps" sub="8 connected · Browse hub" />
-        <Row icon={Radio} title="Mesh network" sub="4 peers nearby · Bluetooth + Wi-Fi Direct" />
+        <Row icon={Sparkles} title="Circle Hub" sub="All 18 pillars — Mail, ID, Verify, Mesh, Maps, more"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
+        <Row icon={KeyRound} title="Circle ID" sub="yousef@circle.app · OIDC provider"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
+        <Row icon={Mail} title="Circle Mail" sub="3 unread · Free forever"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
+        <Row icon={Grid3x3} title="Mini apps" sub="8 connected · Browse hub"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
+        <Row icon={Radio} title="Mesh network" sub="4 peers nearby · Bluetooth + Wi-Fi Direct"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
       </Section>
 
       <Section title="Trust & governance">
-        <Row icon={ShieldCheck} title="Circle Verify" sub="Identity verified · One account per ID" />
-        <Row icon={HardDriveDownload} title="Backup & migrate" sub="Encrypted, user-held key" />
+        <Row icon={ShieldCheck} title="Circle Verify" sub="Identity verified · One account per ID"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
+        <Row icon={HardDriveDownload} title="Backup & migrate" sub="Encrypted, user-held key"
+          onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
         <Row icon={Scale} title="Community governance" sub="Vote on moderation policies"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:governance"))} />
       </Section>

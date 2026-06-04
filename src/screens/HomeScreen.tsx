@@ -119,7 +119,18 @@ export function HomeScreen() {
 
       {/* Mini apps */}
       <section>
-        <SectionHeader icon={Grid3x3} title={t.miniApps} />
+        <div className="flex items-center justify-between px-5 mb-3">
+          <div className="flex items-center gap-2">
+            <Grid3x3 className="w-4 h-4 text-secondary" />
+            <h2 className="font-display text-xl">{t.miniApps}</h2>
+          </div>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))}
+            className="text-xs text-secondary flex items-center gap-1 hover:gap-2 transition-all"
+          >
+            Explore all <ChevronRight className="w-3 h-3" />
+          </button>
+        </div>
         <div className="grid grid-cols-4 gap-2.5 px-5">
           {miniApps.map(m => (
             <button key={m.id} className={`relative aspect-square rounded-2xl bg-gradient-to-br ${m.color} border border-border/50 flex flex-col items-center justify-center gap-1 hover:scale-[1.04] transition overflow-hidden`}>
@@ -128,6 +139,14 @@ export function HomeScreen() {
               <span className="text-[8px] uppercase tracking-widest text-muted-foreground">{m.cat}</span>
             </button>
           ))}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))}
+            className="relative aspect-square rounded-2xl bg-gradient-hero border border-primary/30 flex flex-col items-center justify-center gap-1 hover:scale-[1.04] transition overflow-hidden text-primary-foreground shadow-soft"
+          >
+            <Sparkles className="w-5 h-5" />
+            <span className="text-[10px] font-medium">All pillars</span>
+            <span className="text-[8px] uppercase tracking-widest opacity-70">18 modules</span>
+          </button>
         </div>
       </section>
 

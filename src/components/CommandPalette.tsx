@@ -60,7 +60,21 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
                     {items.map(c => (
                       <button
                         key={c.id}
-                        onClick={onClose}
+                        onClick={() => {
+                          const label = c.label.toLowerCase();
+                          if (label.includes("hub") || label.includes("verify") || label.includes("mail")) {
+                            window.dispatchEvent(new CustomEvent("circle:hub"));
+                          } else if (label.includes("governance")) {
+                            window.dispatchEvent(new CustomEvent("circle:governance"));
+                          } else if (label.includes("compose") || label.includes("post")) {
+                            window.dispatchEvent(new CustomEvent("circle:composer", { detail: { kind: "post" } }));
+                          } else if (label.includes("space")) {
+                            window.dispatchEvent(new CustomEvent("circle:composer", { detail: { kind: "media" } }));
+                          } else {
+                            window.dispatchEvent(new CustomEvent("circle:ai"));
+                          }
+                          onClose();
+                        }}
                         className="w-full text-start px-3 py-2.5 rounded-xl hover:bg-muted/60 flex items-center gap-3 group transition"
                       >
                         <span className="w-7 h-7 rounded-lg bg-muted flex items-center justify-center">

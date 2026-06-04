@@ -100,6 +100,9 @@ export const commands = [
   { id: "cmd6", group: "AI", label: "Summarize unread messages", hint: "A S" },
   { id: "cmd7", group: "AI", label: "Translate clipboard", hint: "A T" },
   { id: "cmd8", group: "Privacy", label: "Toggle Ghost mode", hint: "⌥ G" },
+  { id: "cmd9", group: "Navigate", label: "Open Circle Hub — all pillars", hint: "G H" },
+  { id: "cmd10", group: "Navigate", label: "Open Governance center", hint: "G V" },
+  { id: "cmd11", group: "Navigate", label: "Open Circle Verify", hint: "G I" },
 ];
 
 // Channel/Workspace cards on Home
