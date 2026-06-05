@@ -1,10 +1,11 @@
 import { trips } from "@/lib/mock";
+import { IMG } from "@/lib/mockImages";
 import { MapPin, Plane, Hotel, Languages, DollarSign, Sparkles, Calendar } from "lucide-react";
 
 const cover: Record<string, string> = {
-  teal: "from-primary to-brand-steel",
-  rose: "from-accent to-brand-rose",
-  gold: "from-brand-gold to-brand-rose",
+  teal: IMG.istanbul,
+  rose: IMG.tokyo,
+  gold: IMG.alula,
 };
 
 export function RihlaScreen() {
@@ -65,8 +66,9 @@ export function RihlaScreen() {
         <h2 className="font-display text-xl mb-3">Your trips</h2>
         <div className="space-y-3">
           {trips.map(t => (
-            <div key={t.id} className={`rounded-2xl bg-gradient-to-br ${cover[t.cover]} p-5 relative overflow-hidden`} style={{ color: 'hsl(var(--cream))' }}>
-              <div className="absolute inset-0 bg-gradient-aurora opacity-50" />
+            <div key={t.id} className="rounded-2xl relative overflow-hidden p-5 shadow-soft min-h-[140px]" style={{ color: 'hsl(var(--cream))' }}>
+              <img src={cover[t.cover]} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-charcoal/80 via-charcoal/30 to-transparent" />
               <div className="relative flex items-end justify-between">
                 <div>
                   <div className="text-[10px] uppercase tracking-widest opacity-80 flex items-center gap-1"><Calendar className="w-3 h-3" /> {t.dates}</div>
