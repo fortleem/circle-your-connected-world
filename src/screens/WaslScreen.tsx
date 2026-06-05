@@ -1,4 +1,5 @@
 import { chats, channels } from "@/lib/mock";
+import { AVATARS } from "@/lib/mockImages";
 import { Search, Plus, Sparkles, Mic, Send, Image as ImageIcon, Phone, Video, Ghost, Users, BadgeCheck, Radio } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -73,9 +74,13 @@ export function WaslScreen() {
           <motion.li key={c.id} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
             <button onClick={() => setActive(c.id)} className="w-full text-start px-5 py-3 hover:bg-muted/40 transition flex items-center gap-3">
               <div className="relative shrink-0">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-display text-lg ${c.ai ? "bg-gradient-mesh text-primary-foreground" : c.group ? "bg-gradient-gold text-brand-charcoal" : "bg-gradient-hero text-primary-foreground"}`}>
-                  {c.group ? <Users className="w-5 h-5" /> : c.ai ? <Sparkles className="w-5 h-5" /> : c.name[0]}
-                </div>
+                {c.ai || c.group ? (
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-display text-lg ${c.ai ? "bg-gradient-mesh text-primary-foreground" : "bg-gradient-gold text-brand-charcoal"}`}>
+                    {c.group ? <Users className="w-5 h-5" /> : <Sparkles className="w-5 h-5" />}
+                  </div>
+                ) : (
+                  <img src={AVATARS[i % AVATARS.length]} alt="" loading="lazy" className="w-12 h-12 rounded-2xl object-cover" />
+                )}
                 {c.online && <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-secondary border-2 border-background" />}
               </div>
               <div className="flex-1 min-w-0">

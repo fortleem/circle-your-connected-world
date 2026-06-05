@@ -1,4 +1,5 @@
 import { reels } from "@/lib/mock";
+import { SCENES } from "@/lib/mockImages";
 import { Heart, MessageCircle, Share2, Music, Sparkles, Radio } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -23,8 +24,8 @@ export function MashahdScreen() {
         {reels.map((r, i) => (
           <motion.div key={r.id} initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.08 }}
             className="relative rounded-3xl overflow-hidden aspect-[9/14] sm:aspect-[16/9] shadow-float">
-            <div className="absolute inset-0 bg-gradient-mesh" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent" style={{ ['--tw-gradient-from' as any]: 'hsl(var(--charcoal) / 0.85)' }} />
+            <img src={SCENES[(i + 3) % SCENES.length]} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/20 to-transparent" />
             <div className="absolute top-3 left-3 glass text-[10px] px-2 py-1 rounded-full flex items-center gap-1">
               <Sparkles className="w-3 h-3 text-secondary" /> AI captions on
             </div>

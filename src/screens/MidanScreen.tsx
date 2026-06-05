@@ -1,4 +1,5 @@
 import { posts, trending } from "@/lib/mock";
+import { AVATARS, IMG } from "@/lib/mockImages";
 import { Heart, MessageCircle, Repeat2, Share2, ShieldCheck, Mic, BadgeCheck, BarChart3, Radio } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -41,7 +42,7 @@ export function MidanScreen() {
           <motion.li key={p.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
             className="px-5 py-4 border-b border-border">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-mesh shrink-0" />
+              <img src={AVATARS[i % AVATARS.length]} alt="" loading="lazy" className="w-10 h-10 rounded-full object-cover shrink-0" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
                   <span className="font-medium">{p.user}</span>
@@ -51,8 +52,8 @@ export function MidanScreen() {
                 <p className="mt-1.5 text-[15px] leading-relaxed">{p.body}</p>
 
                 {p.image && (
-                  <div className="mt-3 rounded-2xl aspect-video bg-gradient-hero relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-aurora opacity-70" />
+                  <div className="mt-3 rounded-2xl aspect-video relative overflow-hidden">
+                    <img src={IMG.diriyah} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                   </div>
                 )}
 

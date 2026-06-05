@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { featured, nearby, trending, miniApps, spaces } from "@/lib/mock";
+import { SCENES, IMG } from "@/lib/mockImages";
 import { useApp } from "@/providers/AppProvider";
 import { dict } from "@/lib/i18n";
 import { MeshBadge } from "@/components/shell/MeshBadge";
 import { MeshPresence } from "@/components/MeshPresence";
-import { Sparkles, MapPin, TrendingUp, Briefcase, Zap, Plus, Mic, Camera, ScanLine, Mail, BadgeCheck, Radio, Grid3x3, ChevronRight, ShieldCheck } from "lucide-react";
+import { Sparkles, MapPin, TrendingUp, Briefcase, Zap, Plus, Mic, Camera, ScanLine, Mail, BadgeCheck, Radio, Grid3x3, ChevronRight, ShieldCheck, Activity } from "lucide-react";
 
 const colorMap: Record<string, string> = {
   rose: "from-accent/30 to-accent/5 border-accent/30",
@@ -48,12 +49,13 @@ export function HomeScreen() {
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
               className={`snap-start shrink-0 w-[78%] sm:w-[60%] md:w-[40%] aspect-[4/5] rounded-2xl border bg-gradient-to-br ${colorMap[f.color]} p-5 relative overflow-hidden glass`}
             >
-              <div className="absolute inset-0 aurora-bg opacity-60" />
-              <div className="relative h-full flex flex-col justify-between">
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{f.kind}</span>
+              <img src={SCENES[i % SCENES.length]} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-transparent" />
+              <div className="relative h-full flex flex-col justify-between" style={{ color: 'hsl(var(--cream))' }}>
+                <span className="text-[10px] uppercase tracking-widest opacity-80">{f.kind}</span>
                 <div>
                   <h3 className="font-display text-2xl leading-tight">{f.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-2">{f.subtitle}</p>
+                  <p className="text-sm opacity-80 mt-2">{f.subtitle}</p>
                 </div>
               </div>
             </motion.article>
@@ -66,7 +68,7 @@ export function HomeScreen() {
         <div className="grid grid-cols-4 gap-3">
           {[
             { icon: ScanLine, label: "Scan & Pay", evt: "ai" as const },
-            { icon: Camera, label: "Story", evt: "composer" as const, detail: { kind: "media" } },
+            { icon: Activity, label: "City Pulse", evt: "pulse" as const },
             { icon: Plus, label: "Post", evt: "composer" as const, detail: { kind: "post" } },
             { icon: Sparkles, label: "Ask AI", evt: "ai" as const },
           ].map((q, i) => (
@@ -176,9 +178,10 @@ export function HomeScreen() {
       <section>
         <SectionHeader icon={MapPin} title={t.nearby} />
         <div className="flex gap-3 overflow-x-auto scrollbar-hide px-5 pb-2">
-          {nearby.map(n => (
+          {nearby.map((n, i) => (
             <div key={n.id} className="shrink-0 w-56 rounded-2xl bg-gradient-card border border-border p-4 shadow-soft">
-              <div className="aspect-video rounded-xl bg-gradient-mesh opacity-90 mb-3 relative overflow-hidden">
+              <div className="aspect-video rounded-xl mb-3 relative overflow-hidden">
+                <img src={SCENES[(i + 1) % SCENES.length]} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute top-2 right-2 glass text-[10px] px-2 py-0.5 rounded-full">{n.tag}</div>
               </div>
               <div className="font-medium">{n.title}</div>

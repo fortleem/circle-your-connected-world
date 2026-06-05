@@ -103,6 +103,7 @@ export const commands = [
   { id: "cmd9", group: "Navigate", label: "Open Circle Hub — all pillars", hint: "G H" },
   { id: "cmd10", group: "Navigate", label: "Open Governance center", hint: "G V" },
   { id: "cmd11", group: "Navigate", label: "Open Circle Verify", hint: "G I" },
+  { id: "cmd12", group: "Navigate", label: "Open Circle Pulse — live city biome", hint: "G P" },
 ];
 
 // Channel/Workspace cards on Home

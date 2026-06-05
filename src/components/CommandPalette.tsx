@@ -62,7 +62,9 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
                         key={c.id}
                         onClick={() => {
                           const label = c.label.toLowerCase();
-                          if (label.includes("hub") || label.includes("verify") || label.includes("mail")) {
+                          if (label.includes("pulse")) {
+                            window.dispatchEvent(new CustomEvent("circle:pulse"));
+                          } else if (label.includes("hub") || label.includes("verify") || label.includes("mail")) {
                             window.dispatchEvent(new CustomEvent("circle:hub"));
                           } else if (label.includes("governance")) {
                             window.dispatchEvent(new CustomEvent("circle:governance"));
