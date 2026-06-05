@@ -1,4 +1,5 @@
 import { photos } from "@/lib/mock";
+import { SCENES } from "@/lib/mockImages";
 import { Sparkles, Layers, Heart } from "lucide-react";
 
 export function LamahatScreen() {
@@ -34,14 +35,15 @@ export function LamahatScreen() {
 
       {/* Pinterest-style grid */}
       <div className="columns-2 sm:columns-3 md:columns-4 gap-2 px-2 mt-5">
-        {photos.map(p => (
+        {photos.map((p, i) => (
           <div key={p.id}
             className={`mb-2 break-inside-avoid rounded-xl relative overflow-hidden group ${
               p.ratio === "tall" ? "aspect-[3/4]" : p.ratio === "wide" ? "aspect-[4/3]" : "aspect-square"
             }`}
-            style={{ background: `linear-gradient(135deg, hsl(${p.hue} 60% 55%), hsl(${(p.hue + 60) % 360} 50% 35%))` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
+            <img src={SCENES[i % SCENES.length]} alt="" loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition" />
             <button className="absolute top-2 right-2 w-7 h-7 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
               <Heart className="w-3.5 h-3.5" />
             </button>
