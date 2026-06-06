@@ -1,6 +1,6 @@
 import { useApp } from "@/providers/AppProvider";
 import { dict } from "@/lib/i18n";
-import { Sun, Moon, Languages, Bell, Search, Settings as SettingsIcon } from "lucide-react";
+import { Sun, Moon, Languages, Bell, Search, Settings as SettingsIcon, Mail } from "lucide-react";
 import { CircleMark } from "@/components/brand/CircleMark";
 
 export function TopBar({ title, onSearch, onSettings }: { title?: string; onSearch?: () => void; onSettings?: () => void }) {
@@ -25,6 +25,11 @@ export function TopBar({ title, onSearch, onSettings }: { title?: string; onSear
         </button>
         <button onClick={toggleLocale} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Language">
           <Languages className="w-4 h-4" />
+        </button>
+        <button onClick={() => window.dispatchEvent(new CustomEvent("circle:hub", { detail: { module: "mail" } }))}
+          className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition relative" aria-label="Circle Mail">
+          <Mail className="w-4 h-4" />
+          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-secondary" />
         </button>
         <button onClick={onSettings} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition" aria-label="Settings">
           <SettingsIcon className="w-4 h-4" />
