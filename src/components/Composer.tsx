@@ -1,15 +1,23 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Image as ImageIcon, BarChart3, Mic, Send, Hash, Globe, Users, Sparkles, Plus, Trash2 } from "lucide-react";
+import { X, Image as ImageIcon, BarChart3, Mic, Send, Hash, Globe, Users, Sparkles, Plus, Trash2, Lock, Heart, Check } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 type Kind = "post" | "poll" | "media";
-type Target = "Public" | "Followers" | "Workspace";
+type Target = "Public" | "Friends" | "Close Friends" | "Workspace";
+
+const TARGETS: { k: Target; i: any; desc: string }[] = [
+  { k: "Public", i: Globe, desc: "Anyone on Circle can see and reshare" },
+  { k: "Friends", i: Users, desc: "Only people you follow back" },
+  { k: "Close Friends", i: Heart, desc: "A private list you curate" },
+  { k: "Workspace", i: Lock, desc: "Members of your active Circle workspace" },
+];
 
 export function Composer({ open, onClose, defaultTarget = "Public", initialKind, initialText }: { open: boolean; onClose: () => void; defaultTarget?: Target; initialKind?: Kind; initialText?: string }) {
   const [kind, setKind] = useState<Kind>(initialKind ?? "post");
   const [text, setText] = useState(initialText ?? "");
   const [target, setTarget] = useState<Target>(defaultTarget);
+  const [audOpen, setAudOpen] = useState(false);
   const [media, setMedia] = useState<string[]>([]);
   const [pollOptions, setPollOptions] = useState<string[]>(["", ""]);
 
