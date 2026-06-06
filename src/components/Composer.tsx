@@ -1,15 +1,23 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Image as ImageIcon, BarChart3, Mic, Send, Hash, Globe, Users, Sparkles, Plus, Trash2 } from "lucide-react";
+import { X, Image as ImageIcon, BarChart3, Mic, Send, Hash, Globe, Users, Sparkles, Plus, Trash2, Lock, Heart, Check } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 type Kind = "post" | "poll" | "media";
-type Target = "Public" | "Followers" | "Workspace";
+type Target = "Public" | "Friends" | "Close Friends" | "Workspace";
+
+const TARGETS: { k: Target; i: any; desc: string }[] = [
+  { k: "Public", i: Globe, desc: "Anyone on Circle can see and reshare" },
+  { k: "Friends", i: Users, desc: "Only people you follow back" },
+  { k: "Close Friends", i: Heart, desc: "A private list you curate" },
+  { k: "Workspace", i: Lock, desc: "Members of your active Circle workspace" },
+];
 
 export function Composer({ open, onClose, defaultTarget = "Public", initialKind, initialText }: { open: boolean; onClose: () => void; defaultTarget?: Target; initialKind?: Kind; initialText?: string }) {
   const [kind, setKind] = useState<Kind>(initialKind ?? "post");
   const [text, setText] = useState(initialText ?? "");
   const [target, setTarget] = useState<Target>(defaultTarget);
+  const [audOpen, setAudOpen] = useState(false);
   const [media, setMedia] = useState<string[]>([]);
   const [pollOptions, setPollOptions] = useState<string[]>(["", ""]);
 
@@ -74,10 +82,28 @@ export function Composer({ open, onClose, defaultTarget = "Public", initialKind,
                 </button>
               ))}
               <div className="flex-1" />
-              <button onClick={() => setTarget(t => t === "Public" ? "Followers" : t === "Followers" ? "Workspace" : "Public")}
-                className="text-xs px-3 py-1.5 rounded-full glass flex items-center gap-1.5">
-                {target === "Public" ? <Globe className="w-3 h-3" /> : <Users className="w-3 h-3" />} {target}
-              </button>
+              <div className="relative">
+                <button onClick={() => setAudOpen(o => !o)}
+                  className="text-xs px-3 py-1.5 rounded-full glass flex items-center gap-1.5">
+                  {(() => { const Ic = TARGETS.find(x => x.k === target)!.i; return <Ic className="w-3 h-3" />; })()}
+                  {target}
+                </button>
+                {audOpen && (
+                  <div className="absolute right-0 mt-2 z-50 glass-strong rounded-2xl p-2 w-64 shadow-float">
+                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground px-2 pt-1 pb-2">Who can see this?</div>
+                    {TARGETS.map(o => (
+                      <button key={o.k} onClick={() => { setTarget(o.k); setAudOpen(false); }}
+                        className={`w-full text-left px-2 py-2 rounded-lg flex items-start gap-2 ${target === o.k ? "bg-primary/15" : "hover:bg-muted/50"}`}>
+                        <o.i className="w-4 h-4 mt-0.5 text-secondary shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-medium flex items-center gap-1">{o.k}{target === o.k && <Check className="w-3 h-3" />}</div>
+                          <div className="text-[11px] text-muted-foreground">{o.desc}</div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="flex-1 overflow-y-auto px-5 pt-3 grid md:grid-cols-2 gap-4 pb-3">
