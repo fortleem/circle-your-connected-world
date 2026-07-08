@@ -249,7 +249,7 @@ export function HomeScreen() {
         <div className="rounded-2xl border border-border/60 p-4 flex items-start gap-3 bg-gradient-card">
           <ShieldCheck className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
           <div className="text-xs text-muted-foreground leading-relaxed">
-            <span className="text-foreground font-medium">The Circle Covenant.</span> Every feature is free, forever. Your data lives on your device. No tracking, no surveillance ads, no subscriptions.
+            <span className="text-foreground font-medium">The Cirkel Covenant.</span> Every feature is free, forever. Your data lives on your device. No tracking, no surveillance ads, no subscriptions.
           </div>
         </div>
       </section>

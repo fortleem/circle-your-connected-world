@@ -15,7 +15,7 @@ export function GovernanceCenter({ open, onClose }: { open: boolean; onClose: ()
   const cast = (id: string, v: Vote) => {
     setVotes(s => ({ ...s, [id]: v }));
     toast.success(`Vote recorded · ${v.toUpperCase()}`, {
-      description: "Your vote is signed on-device and broadcast to the Circle quorum.",
+      description: "Your vote is signed on-device and broadcast to the Cirkel quorum.",
     });
   };
 
@@ -119,7 +119,7 @@ export function GovernanceCenter({ open, onClose }: { open: boolean; onClose: ()
                       </div>
                     ) : (
                       <div className="text-[11px] flex items-center gap-1.5 text-secondary">
-                        <CheckCircle2 className="w-3.5 h-3.5" /> Decision recorded on the Circle ledger
+                        <CheckCircle2 className="w-3.5 h-3.5" /> Decision recorded on the Cirkel ledger
                       </div>
                     )}
                   </motion.li>

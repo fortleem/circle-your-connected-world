@@ -1,4 +1,4 @@
-// Mock data for Circle screens
+// Mock data for Cirkel screens
 export const featured = [
   { id: "f1", kind: "alert", title: "Air-quality advisory", subtitle: "Riyadh • Moderate dust until 9pm", color: "rose" },
   { id: "f2", kind: "event", title: "Diriyah Light Festival", subtitle: "Tonight • 7:30 PM • 12 min away", color: "gold" },

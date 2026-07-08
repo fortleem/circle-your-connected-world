@@ -49,13 +49,13 @@ export function ProfileScreen() {
       </Section>
 
       <Section title="Personalization">
-        <Row icon={Sparkles} title="AI personalization" sub="What Circle knows about you" />
+        <Row icon={Sparkles} title="AI personalization" sub="What Cirkel knows about you" />
         <Row icon={Palette} title="Theme" sub={theme === "dark" ? "Dark · Aurora" : "Light · Cream"} onClick={toggleTheme} />
         <Row icon={Languages} title="Language" sub={locale === "ar" ? "العربية (RTL)" : "English"} onClick={toggleLocale} />
         <Row icon={Globe} title="Region" sub="Saudi Arabia · Auto data plane" />
       </Section>
 
-      <Section title="Circle ecosystem">
+      <Section title="Cirkel ecosystem">
         <Row icon={Sparkles} title="Cirkel Hub" sub="All 18 pillars — Mail, ID, Verify, Mesh, Maps, more"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
         <Row icon={KeyRound} title="Cirkel ID" sub="yousef@circle.app · OIDC provider"

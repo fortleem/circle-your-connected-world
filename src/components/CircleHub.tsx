@@ -31,13 +31,13 @@ const PILLARS: Pillar[] = [
   { id: "privacy", name: "Privacy Dashboard", tagline: "Self-audit & risk simulation", icon: ShieldCheck, tint: "from-primary/30 to-primary/5" },
   { id: "aisafety", name: "AI Safety", tagline: "On-device moderation models", icon: Brain, tint: "from-accent/30 to-accent/5" },
   { id: "translate", name: "Universal Translate", tagline: "120 languages, on-device", icon: Languages, tint: "from-secondary/30 to-secondary/5" },
-  { id: "maps", name: "Circle Maps", tagline: "Zero-cost OSM + Valhalla", icon: MapPin, tint: "from-brand-teal/30 to-brand-teal/5" },
+  { id: "maps", name: "Cirkel Maps", tagline: "Zero-cost OSM + Valhalla", icon: MapPin, tint: "from-brand-teal/30 to-brand-teal/5" },
   { id: "ads", name: "Ads Transparency", tagline: "Local, non-targeted, opt-out", icon: Megaphone, tint: "from-brand-rose/30 to-brand-rose/5" },
   { id: "workspaces", name: "Workspaces", tagline: "Notion-class team OS", icon: Briefcase, tint: "from-brand-gold/30 to-brand-gold/5", badge: "12" },
   { id: "education", name: "Education", tagline: "Schools & universities", icon: GraduationCap, tint: "from-primary/30 to-primary/5" },
   { id: "creators", name: "Creator Channels", tagline: "Monetisation, gifts, super-fans", icon: Sparkles, tint: "from-secondary/30 to-secondary/5" },
   { id: "professional", name: "Professional Network", tagline: "Your career graph", icon: Users, tint: "from-brand-steel/30 to-brand-steel/5" },
-  { id: "groups", name: "The Circle (Groups)", tagline: "Public & private circles", icon: Network, tint: "from-accent/30 to-accent/5" },
+  { id: "groups", name: "The Cirkel (Groups)", tagline: "Public & private circles", icon: Network, tint: "from-accent/30 to-accent/5" },
   { id: "selflearn", name: "Self-Learning AI", tagline: "Federated, on-device tuning", icon: Brain, tint: "from-brand-teal/30 to-brand-teal/5" },
   { id: "federation", name: "Federation", tagline: "Matrix · ActivityPub · IPFS", icon: Server, tint: "from-brand-steel/30 to-brand-steel/5" },
 ];
@@ -191,7 +191,7 @@ const DETAILS: Record<PillarId, Detail> = {
     metrics: [{ v: "3", l: "Unread" }, { v: "12 GB", l: "Storage" }, { v: "0$", l: "Forever" }],
     rows: [
       { icon: Mail, title: "yousef@circle.app", body: "Permanent address tied to your Cirkel ID. No ads, no scanning, no upsell.", tag: "Free" },
-      { icon: Lock, title: "E2EE between Circle users", body: "Outside SMTP falls back to TLS + warning labels.", tag: "Secure" },
+      { icon: Lock, title: "E2EE between Cirkel users", body: "Outside SMTP falls back to TLS + warning labels.", tag: "Secure" },
       { icon: Sparkles, title: "Inbox AI", body: "On-device triage, smart replies, and summary digests every morning." },
     ],
   },
@@ -205,7 +205,7 @@ const DETAILS: Record<PillarId, Detail> = {
   },
   verify: {
     rows: [
-      { icon: BadgeCheck, title: "Real-identity verification", body: "Government ID + liveness, processed on-device — Circle never stores the photo.", tag: "Live" },
+      { icon: BadgeCheck, title: "Real-identity verification", body: "Government ID + liveness, processed on-device — Cirkel never stores the photo.", tag: "Live" },
       { icon: FileCheck2, title: "One account per ID", body: "Cryptographic uniqueness via blind-signed attestations from community verifiers." },
       { icon: Users, title: "Trust score", body: "Earned through verified actions, peer endorsements, and governance participation." },
     ],
@@ -230,7 +230,7 @@ const DETAILS: Record<PillarId, Detail> = {
     rows: [
       { icon: HardDriveDownload, title: "Encrypted backup", body: "Stored on IPFS or your own NAS — only your seed unlocks it." },
       { icon: Cloud, title: "Phone migration", body: "Scan a QR from the new device; restore takes under 60 seconds." },
-      { icon: Lock, title: "Zero-knowledge", body: "Circle servers never see your keys, messages, or media." },
+      { icon: Lock, title: "Zero-knowledge", body: "Cirkel servers never see your keys, messages, or media." },
     ],
   },
   privacy: {
@@ -265,7 +265,7 @@ const DETAILS: Record<PillarId, Detail> = {
   ads: {
     metrics: [{ v: "City-level", l: "Targeting" }, { v: "0", l: "Profiles sold" }, { v: "100%", l: "Opt-out" }],
     rows: [
-      { icon: Megaphone, title: "Local ads only", body: "Businesses buy a city + category. Circle never shares user data." },
+      { icon: Megaphone, title: "Local ads only", body: "Businesses buy a city + category. Cirkel never shares user data." },
       { icon: FileCheck2, title: "Corporate-invoice billing", body: "Advertisers pay by invoice, not by user action — no incentive to track." },
       { icon: EyeOff, title: "One-tap opt-out", body: "Turn off all sponsorship slots and keep every feature." },
     ],

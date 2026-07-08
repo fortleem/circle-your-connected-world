@@ -10,7 +10,7 @@ const TARGETS: { k: Target; i: any; desc: string }[] = [
   { k: "Public", i: Globe, desc: "Anyone on Cirkel can see and reshare" },
   { k: "Friends", i: Users, desc: "Only people you follow back" },
   { k: "Close Friends", i: Heart, desc: "A private list you curate" },
-  { k: "Workspace", i: Lock, desc: "Members of your active Circle workspace" },
+  { k: "Workspace", i: Lock, desc: "Members of your active Cirkel workspace" },
 ];
 
 export function Composer({ open, onClose, defaultTarget = "Public", initialKind, initialText }: { open: boolean; onClose: () => void; defaultTarget?: Target; initialKind?: Kind; initialText?: string }) {
