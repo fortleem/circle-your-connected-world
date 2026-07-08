@@ -9,11 +9,11 @@ export function PayScreen() {
     <div className="pb-32">
       <div className="px-5 pt-2 flex items-start justify-between">
         <div>
-          <h1 className="font-display text-4xl">Circle Pay</h1>
+          <h1 className="font-display text-4xl">Cirkel Pay</h1>
           <p className="text-sm text-muted-foreground mt-1">Fee-free · Globally federated</p>
         </div>
         <span className="text-[10px] glass rounded-full px-3 py-1.5 flex items-center gap-1.5 text-secondary">
-          <ShieldCheck className="w-3 h-3" /> Verified by Circle ID
+          <ShieldCheck className="w-3 h-3" /> Verified by Cirkel ID
         </span>
       </div>
 

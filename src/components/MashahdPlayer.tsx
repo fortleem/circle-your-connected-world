@@ -141,7 +141,7 @@ export function MashahdPlayer({ open, index, onClose }: { open: boolean; index: 
                   <Pill icon={ThumbsDown} label="" />
                   <Pill icon={Share2} label="Share" onClick={() => toast("Share sheet opened")} />
                   <Pill icon={Bookmark} label="Save" onClick={() => toast("Saved to Watch Later")} />
-                  <Pill icon={Gift} label="Tip" onClick={() => toast("Tip jar opened · Circle Pay")} />
+                  <Pill icon={Gift} label="Tip" onClick={() => toast("Tip jar opened · Cirkel Pay")} />
                   <Pill icon={Sparkles} label="AI summary" onClick={() => toast.success("Summary", { description: "Cinematic walk through AlUla at golden hour with ambient Sahara score." })} />
                 </div>
 

@@ -44,7 +44,7 @@ export function GovernanceCenter({ open, onClose }: { open: boolean; onClose: ()
               <div className="flex-1">
                 <h2 className="font-display text-2xl leading-tight">Governance Center</h2>
                 <div className="text-[11px] text-secondary flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3" /> Transparent · One Circle ID, one vote
+                  <ShieldCheck className="w-3 h-3" /> Transparent · One Cirkel ID, one vote
                 </div>
               </div>
               <button onClick={onClose} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center" aria-label="Close">

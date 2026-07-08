@@ -22,9 +22,9 @@ interface Pillar {
 }
 
 const PILLARS: Pillar[] = [
-  { id: "mail", name: "Circle Mail", tagline: "Free @circle.app inbox", icon: Mail, tint: "from-secondary/30 to-secondary/5", badge: "3 new" },
-  { id: "id", name: "Circle ID", tagline: "OIDC across every service", icon: KeyRound, tint: "from-primary/30 to-primary/5" },
-  { id: "verify", name: "Circle Verify", tagline: "One account per real identity", icon: BadgeCheck, tint: "from-accent/30 to-accent/5", badge: "Verified" },
+  { id: "mail", name: "Cirkel Mail", tagline: "Free @circle.app inbox", icon: Mail, tint: "from-secondary/30 to-secondary/5", badge: "3 new" },
+  { id: "id", name: "Cirkel ID", tagline: "OIDC across every service", icon: KeyRound, tint: "from-primary/30 to-primary/5" },
+  { id: "verify", name: "Cirkel Verify", tagline: "One account per real identity", icon: BadgeCheck, tint: "from-accent/30 to-accent/5", badge: "Verified" },
   { id: "mesh", name: "Mesh Network", tagline: "Offline-first BLE + Wi-Fi Direct", icon: Radio, tint: "from-brand-teal/30 to-brand-teal/5", badge: "4 peers" },
   { id: "miniapps", name: "Mini-App Hub", tagline: "Careem, Absher, Fawry & more", icon: Grid3x3, tint: "from-brand-gold/30 to-brand-gold/5" },
   { id: "backup", name: "Backup & Migrate", tagline: "Encrypted, user-held key", icon: HardDriveDownload, tint: "from-brand-steel/30 to-brand-steel/5" },
@@ -42,7 +42,7 @@ const PILLARS: Pillar[] = [
   { id: "federation", name: "Federation", tagline: "Matrix · ActivityPub · IPFS", icon: Server, tint: "from-brand-steel/30 to-brand-steel/5" },
 ];
 
-export function CircleHub({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function CirkelHub({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [active, setActive] = useState<PillarId | null>(null);
   const pillar = PILLARS.find(p => p.id === active);
 
@@ -70,7 +70,7 @@ export function CircleHub({ open, onClose }: { open: boolean; onClose: () => voi
                 </button>
               )}
               <div className="flex-1">
-                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Circle Hub</div>
+                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Cirkel Hub</div>
                 <div className="font-display text-xl">{pillar ? pillar.name : "Every pillar of Circle"}</div>
               </div>
               <button onClick={onClose} className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center">
@@ -190,7 +190,7 @@ const DETAILS: Record<PillarId, Detail> = {
   mail: {
     metrics: [{ v: "3", l: "Unread" }, { v: "12 GB", l: "Storage" }, { v: "0$", l: "Forever" }],
     rows: [
-      { icon: Mail, title: "yousef@circle.app", body: "Permanent address tied to your Circle ID. No ads, no scanning, no upsell.", tag: "Free" },
+      { icon: Mail, title: "yousef@circle.app", body: "Permanent address tied to your Cirkel ID. No ads, no scanning, no upsell.", tag: "Free" },
       { icon: Lock, title: "E2EE between Circle users", body: "Outside SMTP falls back to TLS + warning labels.", tag: "Secure" },
       { icon: Sparkles, title: "Inbox AI", body: "On-device triage, smart replies, and summary digests every morning." },
     ],
@@ -198,7 +198,7 @@ const DETAILS: Record<PillarId, Detail> = {
   id: {
     metrics: [{ v: "1", l: "Identity" }, { v: "47", l: "Apps signed-in" }, { v: "OIDC", l: "Standard" }],
     rows: [
-      { icon: KeyRound, title: "Single sign-on", body: "Use Circle ID to log in to any OIDC-compatible service — no passwords." },
+      { icon: KeyRound, title: "Single sign-on", body: "Use Cirkel ID to log in to any OIDC-compatible service — no passwords." },
       { icon: Fingerprint, title: "Passkeys + biometrics", body: "FIDO2 on every device, recovery through community-key Shamir splits." },
       { icon: ShieldCheck, title: "Granular scopes", body: "Approve exactly what each app sees — and revoke any time." },
     ],
@@ -286,7 +286,7 @@ const DETAILS: Record<PillarId, Detail> = {
   creators: {
     metrics: [{ v: "$0", l: "Platform cut" }, { v: "Gifts", l: "& Tips" }, { v: "Super", l: "Fans" }],
     rows: [
-      { icon: Sparkles, title: "Direct support", body: "Tips, gifts, paid posts via Circle Pay — creators keep 100%." },
+      { icon: Sparkles, title: "Direct support", body: "Tips, gifts, paid posts via Cirkel Pay — creators keep 100%." },
       { icon: Users, title: "Super-fan tiers", body: "Subscriber-only channels, polls, and live rooms." },
     ],
   },

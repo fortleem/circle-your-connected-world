@@ -82,7 +82,7 @@ export function HomeScreen() {
         </div>
       </section>
 
-      {/* Circle ID + Mail strip */}
+      {/* Cirkel ID + Mail strip */}
       <section className="px-5 grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="rounded-2xl border border-secondary/30 bg-gradient-to-br from-secondary/15 to-transparent p-4 relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />
@@ -197,7 +197,7 @@ export function HomeScreen() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
           {[
             { t: "A 3-day getaway to AlUla", s: "Based on your wishlist · From SAR 1,840" },
-            { t: "Weekly read: Calm tech", s: "12-min curated by Circle AI" },
+            { t: "Weekly read: Calm tech", s: "12-min curated by Cirkel Brain" },
           ].map((c, i) => (
             <div key={i} className="rounded-2xl border border-secondary/30 bg-gradient-to-br from-secondary/10 to-transparent p-4 relative overflow-hidden">
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />

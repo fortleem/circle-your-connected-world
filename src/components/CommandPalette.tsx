@@ -46,7 +46,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
               {filtered.length === 0 ? (
                 <div className="px-4 py-8 text-center text-sm text-muted-foreground">
                   <Sparkles className="w-5 h-5 mx-auto mb-2 text-secondary" />
-                  Ask Circle AI to do it instead
+                  Ask Cirkel Brain to do it instead
                 </div>
               ) : (
                 Object.entries(

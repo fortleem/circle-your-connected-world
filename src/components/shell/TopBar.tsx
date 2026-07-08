@@ -27,7 +27,7 @@ export function TopBar({ title, onSearch, onSettings }: { title?: string; onSear
           <Languages className="w-4 h-4" />
         </button>
         <button onClick={() => window.dispatchEvent(new CustomEvent("circle:hub", { detail: { module: "mail" } }))}
-          className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition relative" aria-label="Circle Mail">
+          className="w-9 h-9 rounded-full hover:bg-muted/60 flex items-center justify-center transition relative" aria-label="Cirkel Mail">
           <Mail className="w-4 h-4" />
           <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-secondary" />
         </button>

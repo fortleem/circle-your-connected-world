@@ -2,7 +2,7 @@
 export const featured = [
   { id: "f1", kind: "alert", title: "Air-quality advisory", subtitle: "Riyadh • Moderate dust until 9pm", color: "rose" },
   { id: "f2", kind: "event", title: "Diriyah Light Festival", subtitle: "Tonight • 7:30 PM • 12 min away", color: "gold" },
-  { id: "f3", kind: "ai", title: "Your weekly digest is ready", subtitle: "Curated by Circle AI", color: "teal" },
+  { id: "f3", kind: "ai", title: "Your weekly digest is ready", subtitle: "Curated by Cirkel Brain", color: "teal" },
   { id: "f4", kind: "feature", title: "New: Voice rooms in Midan", subtitle: "Join the conversation", color: "steel" },
 ];
 
@@ -25,7 +25,7 @@ export const chats = [
   { id: "c2", name: "Design Workspace", last: "Omar shared 4 new mockups", time: "12m", unread: 12, group: true },
   { id: "c3", name: "Khalid", last: "Voice message · 0:42", time: "1h", voice: true },
   { id: "c4", name: "Family ❤", last: "Mom: Don't be late", time: "3h", group: true },
-  { id: "c5", name: "Circle AI", last: "Here's a summary of today's news", time: "5h", ai: true, official: true },
+  { id: "c5", name: "Cirkel Brain", last: "Here's a summary of today's news", time: "5h", ai: true, official: true },
   { id: "c6", name: "Sara H.", last: "📷 Photo", time: "Yesterday" },
 ];
 
@@ -36,7 +36,7 @@ export const channels = [
 ];
 
 export const reels = [
-  { id: "r1", creator: "@dunes.studio", caption: "Sunset over AlUla — shot on Circle Pro", likes: "128K", music: "Ambient · Sahara" },
+  { id: "r1", creator: "@dunes.studio", caption: "Sunset over AlUla — shot on Cirkel Pro", likes: "128K", music: "Ambient · Sahara" },
   { id: "r2", creator: "@chefnoura", caption: "3-minute kunafa hack", likes: "89K", music: "Original audio" },
   { id: "r3", creator: "@urbanksa", caption: "Riyadh Boulevard tour", likes: "212K", music: "Lo-fi beats" },
 ];
@@ -52,7 +52,7 @@ export const posts = [
     body: "The new Wasl AI replies are uncannily good. It actually sounds like me 😅",
     likes: 248, comments: 32, reposts: 14, verified: true },
   { id: "po2", user: "Tariq", handle: "@tariq.dev", time: "22m",
-    body: "Hot take: Circle Pay's animation when NFC connects deserves an Oscar 🏆",
+    body: "Hot take: Cirkel Pay's animation when NFC connects deserves an Oscar 🏆",
     likes: 1290, comments: 88, reposts: 220 },
   { id: "po3", user: "Riyadh Daily", handle: "@riyadhdaily", time: "1h",
     body: "Diriyah Light Festival opens tonight. Threads of gold and lanterns return for the 4th season.",
@@ -73,7 +73,7 @@ export const transactions = [
   { id: "x5", who: "STC Pay top-up", amount: -200.00, time: "May 12", cat: "Recharge" },
 ];
 
-// Mini Apps inside Circle (universal app hub)
+// Mini Apps inside Cirkel (universal app hub)
 export const miniApps = [
   { id: "ma1", name: "Careem", cat: "Mobility", color: "from-emerald-500/40 to-teal-600/30", icon: "🚗" },
   { id: "ma2", name: "Jahez", cat: "Food", color: "from-orange-500/40 to-red-500/30", icon: "🍔" },
@@ -96,14 +96,14 @@ export const commands = [
   { id: "cmd2", group: "Quick", label: "Start a Space (audio room)", hint: "S" },
   { id: "cmd3", group: "Quick", label: "Scan & pay", hint: "P then S" },
   { id: "cmd4", group: "Navigate", label: "Open Rihla — Trip planner", hint: "G then R" },
-  { id: "cmd5", group: "Navigate", label: "Open Circle Mail", hint: "G then M" },
+  { id: "cmd5", group: "Navigate", label: "Open Cirkel Mail", hint: "G then M" },
   { id: "cmd6", group: "AI", label: "Summarize unread messages", hint: "A S" },
   { id: "cmd7", group: "AI", label: "Translate clipboard", hint: "A T" },
   { id: "cmd8", group: "Privacy", label: "Toggle Ghost mode", hint: "⌥ G" },
-  { id: "cmd9", group: "Navigate", label: "Open Circle Hub — all pillars", hint: "G H" },
+  { id: "cmd9", group: "Navigate", label: "Open Cirkel Hub — all pillars", hint: "G H" },
   { id: "cmd10", group: "Navigate", label: "Open Governance center", hint: "G V" },
-  { id: "cmd11", group: "Navigate", label: "Open Circle Verify", hint: "G I" },
-  { id: "cmd12", group: "Navigate", label: "Open Circle Pulse — live city biome", hint: "G P" },
+  { id: "cmd11", group: "Navigate", label: "Open Cirkel Verify", hint: "G I" },
+  { id: "cmd12", group: "Navigate", label: "Open Cirkel Pulse — live city biome", hint: "G P" },
 ];
 
 // Channel/Workspace cards on Home
@@ -113,7 +113,7 @@ export const spaces = [
 ];
 
 export const proposals = [
-  { id: "pr1", title: "Open-source the Circle AI moderation rubric",
+  { id: "pr1", title: "Open-source the Cirkel Brain moderation rubric",
     summary: "Publish the full moderation policy and let the community propose amendments quarterly.",
     author: "@council", status: "voting" as const, closesIn: "2d 14h",
     yes: 18420, no: 1240, abstain: 612, tags: ["Trust", "Transparency"] },
