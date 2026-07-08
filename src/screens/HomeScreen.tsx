@@ -6,6 +6,7 @@ import { dict } from "@/lib/i18n";
 import { MeshBadge } from "@/components/shell/MeshBadge";
 import { MeshPresence } from "@/components/MeshPresence";
 import { Sparkles, MapPin, TrendingUp, Briefcase, Zap, Plus, Mic, Camera, ScanLine, Mail, BadgeCheck, Radio, Grid3x3, ChevronRight, ShieldCheck, Activity } from "lucide-react";
+import { useGeolocation } from "@/hooks/useGeolocation";
 
 const colorMap: Record<string, string> = {
   rose: "from-accent/30 to-accent/5 border-accent/30",
@@ -17,6 +18,8 @@ const colorMap: Record<string, string> = {
 export function HomeScreen() {
   const { locale } = useApp();
   const t = dict[locale].home;
+  const geo = useGeolocation();
+  const cityLabel = geo.loading ? "Locating…" : (geo.city ? `${geo.city}${geo.country ? " · " + geo.country : ""}` : "Somewhere on Earth");
   return (
     <div className="space-y-8 pb-32">
       {/* Greeting + mesh */}
@@ -25,7 +28,7 @@ export function HomeScreen() {
           <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="font-display text-4xl leading-tight">
             {t.hello}, <span className="gradient-text-gold">Yousef</span>
           </motion.h1>
-          <p className="text-muted-foreground text-sm mt-1">Riyadh · 28°C · Clear skies</p>
+          <p className="text-muted-foreground text-sm mt-1 flex items-center gap-1.5"><MapPin className="w-3 h-3" /> {cityLabel}</p>
         </div>
         <MeshBadge label={t.mesh} />
       </section>
