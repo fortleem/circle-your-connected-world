@@ -30,8 +30,8 @@ export function Splash() {
         transition={{ delay: 0.6, duration: 0.7 }}
         className="mt-10 text-center relative"
       >
-        <div className="font-display text-5xl gradient-text">Circle</div>
-        <div className="text-[10px] tracking-[0.5em] uppercase text-muted-foreground mt-3">دواير · A new social OS</div>
+        <div className="font-display text-5xl gradient-text">Cirkel</div>
+        <div className="text-[10px] tracking-[0.5em] uppercase text-muted-foreground mt-3">دواير · The social OS</div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.5 }}
