@@ -5,6 +5,8 @@ import { dict } from "@/lib/i18n";
 import { aiSeed } from "@/lib/mock";
 import { useState } from "react";
 import { toast } from "sonner";
+import { askCirkelBrain, type BrainMsg } from "@/lib/cirkelBrain";
+import { useGeolocation } from "@/hooks/useGeolocation";
 
 export type AIAction =
   | { type: "open-composer"; kind?: "post" | "poll" | "media"; draft?: string }
@@ -19,53 +21,59 @@ export function AIAssistant({
   open, onClose, onAction,
 }: { open: boolean; onClose: () => void; onAction?: (a: AIAction) => void }) {
   const { locale } = useApp();
+  const geo = useGeolocation();
   const t = dict[locale].ai;
   const [messages, setMessages] = useState<Msg[]>(aiSeed as Msg[]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
 
-  const respond = (text: string) => {
-    const lower = text.toLowerCase();
-    let reply: Msg = { id: `a${Date.now()}`, role: "ai", text: "" };
-
-    if (/summari[sz]e|tldr|digest/.test(lower)) {
-      reply.text = "Here's your 3-bullet digest:\n• 12 unread messages — 4 marked urgent by your filters.\n• Diriyah Light Festival opens tonight; 3 friends RSVP'd.\n• Governance proposal pr1 closes in 2d 14h — your stance is pending.";
-      reply.chips = [
-        { label: "Open governance", action: { type: "open-governance" }, icon: Scale },
-        { label: "Draft a reply post", action: { type: "open-composer", kind: "post", draft: "My take on tonight's festival: " }, icon: FileText },
-      ];
-    } else if (/poll/.test(lower)) {
-      reply.text = "Drafted a poll for you. Tap to refine and publish.";
-      reply.chips = [{ label: "Open poll composer", action: { type: "open-composer", kind: "poll" }, icon: BarChart3 }];
-    } else if (/(write|draft|compose|post)/.test(lower)) {
-      const draft = text.replace(/^(write|draft|compose|post)[: ]*/i, "");
-      reply.text = "Drafted a post from your idea. Review the preview before publishing.";
-      reply.chips = [{ label: "Open composer", action: { type: "open-composer", kind: "post", draft: draft || "Quick thought — " }, icon: FileText }];
-    } else if (/govern|vote|proposal/.test(lower)) {
-      reply.text = "Two proposals are open for voting right now. Want to review them?";
-      reply.chips = [{ label: "Governance center", action: { type: "open-governance" }, icon: Scale }];
-    } else if (/ghost|privacy/.test(lower)) {
-      reply.text = "Toggling Ghost mode — you'll vanish from presence everywhere.";
-      reply.chips = [{ label: "Toggle Ghost mode", action: { type: "toggle-ghost" }, icon: ShieldCheck }];
-    } else if (/pay|scan/.test(lower)) {
-      reply.text = "Opening Scan & Pay. Hold near any merchant QR or NFC point.";
-      reply.chips = [{ label: "Scan & Pay", action: { type: "scan-pay" }, icon: ScanLine }];
-    } else {
-      reply.text = "Got it. I can summarize, draft posts/polls, open governance, or run quick actions. Tell me what you'd like.";
-      reply.chips = [
-        { label: "Summarize my day", action: { type: "open-composer", kind: "post", draft: "" }, icon: Wand2 },
-      ];
+  const mapAction = (a: any): AIAction | null => {
+    if (!a?.action) return null;
+    switch (a.action) {
+      case "open-composer": return { type: "open-composer", kind: a.payload?.kind, draft: a.payload?.draft };
+      case "open-governance": return { type: "open-governance" };
+      case "scan-pay": return { type: "scan-pay" };
+      case "navigate": return { type: "navigate", tab: a.payload?.tab ?? "home" };
+      default: return null;
     }
-    setMessages(m => [...m, reply]);
   };
 
-  const send = (text: string) => {
+  const send = async (text: string) => {
     if (!text.trim()) return;
     const userMsg: Msg = { id: `u${Date.now()}`, role: "me", text };
     setMessages(m => [...m, userMsg]);
     setInput("");
     setThinking(true);
-    setTimeout(() => { respond(text); setThinking(false); }, 650);
+    try {
+      const history: BrainMsg[] = [...messages, userMsg].map(m => ({
+        role: m.role === "me" ? "user" : "assistant",
+        content: m.text,
+      }));
+      const res = await askCirkelBrain({
+        messages: history,
+        intent: /summari[sz]e|digest|tldr/i.test(text) ? "summarize"
+          : /translate/i.test(text) ? "translate"
+          : /plan|trip|itinerary/i.test(text) ? "plan"
+          : /news|latest|trending/i.test(text) ? "web" : "chat",
+        location: geo.city ? { city: geo.city, country: geo.country, lat: geo.lat, lon: geo.lon } : undefined,
+      });
+      const action = mapAction(res.action);
+      const reply: Msg = {
+        id: `a${Date.now()}`, role: "ai", text: res.text || "…",
+        chips: action ? [{
+          label: action.type === "open-composer" ? "Open composer"
+            : action.type === "open-governance" ? "Governance"
+            : action.type === "scan-pay" ? "Scan & Pay" : "Open",
+          action,
+          icon: action.type === "open-governance" ? Scale : action.type === "scan-pay" ? ScanLine : FileText,
+        }] : undefined,
+      };
+      setMessages(m => [...m, reply]);
+    } catch (e: any) {
+      setMessages(m => [...m, { id: `e${Date.now()}`, role: "ai", text: "Cirkel Brain hit a snag. Try again in a moment." }]);
+    } finally {
+      setThinking(false);
+    }
   };
 
   const handleChip = (a: AIAction) => {
@@ -111,7 +119,7 @@ export function AIAssistant({
                   className={m.role === "me"
                     ? "ms-auto max-w-[85%] px-4 py-2.5 rounded-2xl rounded-br-md text-sm bg-gradient-hero text-primary-foreground whitespace-pre-wrap"
                     : "me-auto max-w-[92%] text-sm leading-relaxed"}>
-                  {m.role === "ai" && <div className="text-[10px] uppercase tracking-widest text-secondary mb-1">Circle AI</div>}
+                  {m.role === "ai" && <div className="text-[10px] uppercase tracking-widest text-secondary mb-1">Cirkel Brain</div>}
                   <div className={m.role === "ai" ? "text-foreground/90 whitespace-pre-wrap" : ""}>{m.text}</div>
                   {m.chips && (
                     <div className="mt-2 flex flex-wrap gap-2">
@@ -128,7 +136,7 @@ export function AIAssistant({
               {thinking && (
                 <div className="me-auto flex items-center gap-1.5 text-xs text-muted-foreground">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse-glow" />
-                  Circle AI is thinking…
+                  Cirkel Brain is thinking…
                 </div>
               )}
             </div>

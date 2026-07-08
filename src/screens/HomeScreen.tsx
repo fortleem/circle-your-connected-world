@@ -6,6 +6,7 @@ import { dict } from "@/lib/i18n";
 import { MeshBadge } from "@/components/shell/MeshBadge";
 import { MeshPresence } from "@/components/MeshPresence";
 import { Sparkles, MapPin, TrendingUp, Briefcase, Zap, Plus, Mic, Camera, ScanLine, Mail, BadgeCheck, Radio, Grid3x3, ChevronRight, ShieldCheck, Activity } from "lucide-react";
+import { useGeolocation } from "@/hooks/useGeolocation";
 
 const colorMap: Record<string, string> = {
   rose: "from-accent/30 to-accent/5 border-accent/30",
@@ -17,6 +18,8 @@ const colorMap: Record<string, string> = {
 export function HomeScreen() {
   const { locale } = useApp();
   const t = dict[locale].home;
+  const geo = useGeolocation();
+  const cityLabel = geo.loading ? "Locating…" : (geo.city ? `${geo.city}${geo.country ? " · " + geo.country : ""}` : "Somewhere on Earth");
   return (
     <div className="space-y-8 pb-32">
       {/* Greeting + mesh */}
@@ -25,7 +28,7 @@ export function HomeScreen() {
           <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="font-display text-4xl leading-tight">
             {t.hello}, <span className="gradient-text-gold">Yousef</span>
           </motion.h1>
-          <p className="text-muted-foreground text-sm mt-1">Riyadh · 28°C · Clear skies</p>
+          <p className="text-muted-foreground text-sm mt-1 flex items-center gap-1.5"><MapPin className="w-3 h-3" /> {cityLabel}</p>
         </div>
         <MeshBadge label={t.mesh} />
       </section>
@@ -82,7 +85,7 @@ export function HomeScreen() {
         </div>
       </section>
 
-      {/* Circle ID + Mail strip */}
+      {/* Cirkel ID + Mail strip */}
       <section className="px-5 grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="rounded-2xl border border-secondary/30 bg-gradient-to-br from-secondary/15 to-transparent p-4 relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />
@@ -197,7 +200,7 @@ export function HomeScreen() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
           {[
             { t: "A 3-day getaway to AlUla", s: "Based on your wishlist · From SAR 1,840" },
-            { t: "Weekly read: Calm tech", s: "12-min curated by Circle AI" },
+            { t: "Weekly read: Calm tech", s: "12-min curated by Cirkel Brain" },
           ].map((c, i) => (
             <div key={i} className="rounded-2xl border border-secondary/30 bg-gradient-to-br from-secondary/10 to-transparent p-4 relative overflow-hidden">
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />
@@ -249,7 +252,7 @@ export function HomeScreen() {
         <div className="rounded-2xl border border-border/60 p-4 flex items-start gap-3 bg-gradient-card">
           <ShieldCheck className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
           <div className="text-xs text-muted-foreground leading-relaxed">
-            <span className="text-foreground font-medium">The Circle Covenant.</span> Every feature is free, forever. Your data lives on your device. No tracking, no surveillance ads, no subscriptions.
+            <span className="text-foreground font-medium">The Cirkel Covenant.</span> Every feature is free, forever. Your data lives on your device. No tracking, no surveillance ads, no subscriptions.
           </div>
         </div>
       </section>

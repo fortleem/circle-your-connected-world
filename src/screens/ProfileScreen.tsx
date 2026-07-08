@@ -49,18 +49,18 @@ export function ProfileScreen() {
       </Section>
 
       <Section title="Personalization">
-        <Row icon={Sparkles} title="AI personalization" sub="What Circle knows about you" />
+        <Row icon={Sparkles} title="AI personalization" sub="What Cirkel knows about you" />
         <Row icon={Palette} title="Theme" sub={theme === "dark" ? "Dark · Aurora" : "Light · Cream"} onClick={toggleTheme} />
         <Row icon={Languages} title="Language" sub={locale === "ar" ? "العربية (RTL)" : "English"} onClick={toggleLocale} />
         <Row icon={Globe} title="Region" sub="Saudi Arabia · Auto data plane" />
       </Section>
 
-      <Section title="Circle ecosystem">
-        <Row icon={Sparkles} title="Circle Hub" sub="All 18 pillars — Mail, ID, Verify, Mesh, Maps, more"
+      <Section title="Cirkel ecosystem">
+        <Row icon={Sparkles} title="Cirkel Hub" sub="All 18 pillars — Mail, ID, Verify, Mesh, Maps, more"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
-        <Row icon={KeyRound} title="Circle ID" sub="yousef@circle.app · OIDC provider"
+        <Row icon={KeyRound} title="Cirkel ID" sub="yousef@circle.app · OIDC provider"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
-        <Row icon={Mail} title="Circle Mail" sub="3 unread · Free forever"
+        <Row icon={Mail} title="Cirkel Mail" sub="3 unread · Free forever"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
         <Row icon={Grid3x3} title="Mini apps" sub="8 connected · Browse hub"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
@@ -69,7 +69,7 @@ export function ProfileScreen() {
       </Section>
 
       <Section title="Trust & governance">
-        <Row icon={ShieldCheck} title="Circle Verify" sub="Identity verified · One account per ID"
+        <Row icon={ShieldCheck} title="Cirkel Verify" sub="Identity verified · One account per ID"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />
         <Row icon={HardDriveDownload} title="Backup & migrate" sub="Encrypted, user-held key"
           onClick={() => window.dispatchEvent(new CustomEvent("circle:hub"))} />

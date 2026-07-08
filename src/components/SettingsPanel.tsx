@@ -43,7 +43,7 @@ export function SettingsPanel({ open, onClose }: { open: boolean; onClose: () =>
                   onChange={setReducedMotion}
                 />
                 <p className="text-[11px] text-muted-foreground px-1">
-                  Circle also respects your system's prefers-reduced-motion setting.
+                  Cirkel also respects your system's prefers-reduced-motion setting.
                 </p>
               </Section>
 

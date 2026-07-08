@@ -7,10 +7,10 @@ type Kind = "post" | "poll" | "media";
 type Target = "Public" | "Friends" | "Close Friends" | "Workspace";
 
 const TARGETS: { k: Target; i: any; desc: string }[] = [
-  { k: "Public", i: Globe, desc: "Anyone on Circle can see and reshare" },
+  { k: "Public", i: Globe, desc: "Anyone on Cirkel can see and reshare" },
   { k: "Friends", i: Users, desc: "Only people you follow back" },
   { k: "Close Friends", i: Heart, desc: "A private list you curate" },
-  { k: "Workspace", i: Lock, desc: "Members of your active Circle workspace" },
+  { k: "Workspace", i: Lock, desc: "Members of your active Cirkel workspace" },
 ];
 
 export function Composer({ open, onClose, defaultTarget = "Public", initialKind, initialText }: { open: boolean; onClose: () => void; defaultTarget?: Target; initialKind?: Kind; initialText?: string }) {
@@ -38,7 +38,7 @@ export function Composer({ open, onClose, defaultTarget = "Public", initialKind,
       return;
     }
     toast.success(`${kind === "poll" ? "Poll" : kind === "media" ? "Media update" : "Post"} published to ${target}`, {
-      description: "Circle AI verified · no misinformation flags.",
+      description: "Cirkel Brain verified · no misinformation flags.",
     });
     reset();
     onClose();
@@ -160,7 +160,7 @@ export function Composer({ open, onClose, defaultTarget = "Public", initialKind,
                   <ToolBtn icon={BarChart3} onClick={() => setKind("poll")} />
                   <ToolBtn icon={Mic} />
                   <ToolBtn icon={Sparkles} onClick={() => {
-                    setText(t => t + (t ? " " : "") + "Drafted with Circle AI — feel free to edit ✨");
+                    setText(t => t + (t ? " " : "") + "Drafted with Cirkel Brain — feel free to edit ✨");
                   }} />
                   <div className="flex-1" />
                   <span className="text-[10px] text-muted-foreground">{text.length}/500</span>

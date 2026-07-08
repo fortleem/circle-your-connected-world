@@ -30,7 +30,7 @@ const screens: Record<TabId, () => JSX.Element> = {
 
 const titles: Record<TabId, string | undefined> = {
   home: undefined, wasl: "Wasl", mashahd: "Mashahd", lamahat: "Lamahat",
-  midan: "Midan", rihla: "Rihla", pay: "Circle Pay", profile: "You",
+  midan: "Midan", rihla: "Rihla", pay: "Cirkel Pay", profile: "You",
 };
 
 // global event bus for cross-screen overlays

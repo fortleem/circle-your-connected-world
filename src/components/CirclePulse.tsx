@@ -45,7 +45,7 @@ export function CirclePulse({ open, onClose }: Props) {
               <div className="relative flex items-start justify-between">
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-secondary flex items-center gap-1.5">
-                    <Activity className="w-3 h-3" /> Circle Pulse · Live city biome
+                    <Activity className="w-3 h-3" /> Cirkel Pulse · Live city biome
                   </div>
                   <h2 className="font-display text-3xl mt-1">{c.name}</h2>
                   <p className="text-xs text-muted-foreground mt-1">
