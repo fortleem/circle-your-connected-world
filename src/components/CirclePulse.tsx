@@ -13,7 +13,7 @@ const CITIES = [
   { name: "NEOM",   mood: 74, energy: 91, calm: 55, sound: "Synthwave · Bay", weather: "Cool · 22°", air: "Good", color: "from-primary/40 to-accent/20", tag: "Electric" },
 ];
 
-export function CirkelPulse({ open, onClose }: Props) {
+export function CirclePulse({ open, onClose }: Props) {
   const [city, setCity] = useState(0);
   const [tick, setTick] = useState(0);
   useEffect(() => {

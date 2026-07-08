@@ -42,7 +42,7 @@ const PILLARS: Pillar[] = [
   { id: "federation", name: "Federation", tagline: "Matrix · ActivityPub · IPFS", icon: Server, tint: "from-brand-steel/30 to-brand-steel/5" },
 ];
 
-export function CirkelHub({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function CircleHub({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [active, setActive] = useState<PillarId | null>(null);
   const pillar = PILLARS.find(p => p.id === active);
 
